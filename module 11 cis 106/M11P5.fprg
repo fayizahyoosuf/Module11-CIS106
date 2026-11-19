@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Total and Tax Calculator"/>
+        <attribute name="authors" value="Student"/>
+        <attribute name="about" value="Computes total and 7% tax using a function and shared variables."/>
+        <attribute name="saved" value="2026-11-18 09:39:15 PM"/>
+        <attribute name="created" value="c2hhbWE7REVTS1RPUC1HSFRTUVVGOzIwMjYtMTEtMTg7MDk6Mzg6MjkgUE07Mjk0Nw=="/>
+        <attribute name="edited" value="c2hhbWE7REVTS1RPUC1HSFRTUVVGOzIwMjYtMTEtMTg7MDk6Mzk6MTUgUE07MTszMDUx"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="quantity" type="Integer" array="False" size=""/>
+            <declare name="unitPrice" type="Real" array="False" size=""/>
+            <declare name="total" type="Real" array="False" size=""/>
+            <declare name="tax" type="Real" array="False" size=""/>
+            <declare name="globalVars" type="Real" array="True" size="2"/>
+            <output expression="&quot;Enter the quantity:&quot;" newline="True"/>
+            <input variable="quantity"/>
+            <output expression="&quot;Enter the unit price:&quot;" newline="True"/>
+            <input variable="unitPrice"/>
+            <call expression="computeTotalAndTax(quantity, unitPrice, globalVars)"/>
+            <assign variable="total" expression="globalVars[0]"/>
+            <assign variable="tax" expression="globalVars[1]"/>
+            <output expression="&quot;Total: $&quot; &amp; ToFixed(total, 2)" newline="True"/>
+            <output expression="&quot;Tax (7%): $&quot; &amp; ToFixed(tax, 2)" newline="True"/>
+        </body>
+    </function>
+    <function name="computeTotalAndTax" type="None" variable="">
+        <parameters>
+            <parameter name="qty" type="Integer" array="False"/>
+            <parameter name="price" type="Real" array="False"/>
+            <parameter name="globals" type="Real" array="True"/>
+        </parameters>
+        <body>
+            <assign variable="globals[0]" expression="qty * price"/>
+            <assign variable="globals[1]" expression="globals[0] * 0.07"/>
+        </body>
+    </function>
+</flowgorithm>

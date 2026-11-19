@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Bowling Handicap Calculator"/>
+        <attribute name="authors" value="Student"/>
+        <attribute name="about" value="Computes average bowling score and average score with handicap using a function."/>
+        <attribute name="saved" value="2026-11-18 09:35:16 PM"/>
+        <attribute name="created" value="c2hhbWE7REVTS1RPUC1HSFRTUVVGOzIwMjYtMTEtMTg7MDk6MzQ6MDIgUE07MjkzNA=="/>
+        <attribute name="edited" value="c2hhbWE7REVTS1RPUC1HSFRTUVVGOzIwMjYtMTEtMTg7MDk6MzU6MTYgUE07MTszMDQ4"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="lastName" type="String" array="False" size=""/>
+            <declare name="game1" type="Real" array="False" size=""/>
+            <declare name="game2" type="Real" array="False" size=""/>
+            <declare name="game3" type="Real" array="False" size=""/>
+            <declare name="handicap" type="Real" array="False" size=""/>
+            <declare name="averageScore" type="Real" array="False" size=""/>
+            <declare name="averageWithHandicap" type="Real" array="False" size=""/>
+            <declare name="results" type="Real" array="True" size="2"/>
+            <output expression="&quot;Enter bowler's last name:&quot;" newline="True"/>
+            <input variable="lastName"/>
+            <output expression="&quot;Enter game 1 score:&quot;" newline="True"/>
+            <input variable="game1"/>
+            <output expression="&quot;Enter game 2 score:&quot;" newline="True"/>
+            <input variable="game2"/>
+            <output expression="&quot;Enter game 3 score:&quot;" newline="True"/>
+            <input variable="game3"/>
+            <output expression="&quot;Enter handicap:&quot;" newline="True"/>
+            <input variable="handicap"/>
+            <call expression="computeBowlingScores(game1, game2, game3, handicap, results)"/>
+            <assign variable="averageScore" expression="results[0]"/>
+            <assign variable="averageWithHandicap" expression="results[1]"/>
+            <output expression="&quot;Bowler Last Name: &quot; &amp; lastName" newline="True"/>
+            <output expression="&quot;Average Score: &quot; &amp; ToFixed(averageScore, 2)" newline="True"/>
+            <output expression="&quot;Average Score with Handicap: &quot; &amp; ToFixed(averageWithHandicap, 2)" newline="True"/>
+        </body>
+    </function>
+    <function name="computeBowlingScores" type="None" variable="">
+        <parameters>
+            <parameter name="g1" type="Real" array="False"/>
+            <parameter name="g2" type="Real" array="False"/>
+            <parameter name="g3" type="Real" array="False"/>
+            <parameter name="hcap" type="Real" array="False"/>
+            <parameter name="returnValues" type="Real" array="True"/>
+        </parameters>
+        <body>
+            <assign variable="returnValues[0]" expression="(g1 + g2 + g3) / 3"/>
+            <assign variable="returnValues[1]" expression="returnValues[0] + hcap"/>
+        </body>
+    </function>
+</flowgorithm>

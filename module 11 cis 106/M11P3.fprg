@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Sales Report"/>
+        <attribute name="authors" value="Student"/>
+        <attribute name="about" value="Computes sales commission and next year target using a function."/>
+        <attribute name="saved" value="2026-11-18 09:28:58 PM"/>
+        <attribute name="created" value="c2hhbWE7REVTS1RPUC1HSFRTUVVGOzIwMjYtMTEtMTg7MDk6Mjc6MzQgUE07Mjk0MQ=="/>
+        <attribute name="edited" value="c2hhbWE7REVTS1RPUC1HSFRTUVVGOzIwMjYtMTEtMTg7MDk6Mjg6NTggUE07MTszMDU2"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="lastName" type="String" array="False" size=""/>
+            <declare name="sales" type="Real" array="False" size=""/>
+            <declare name="commission" type="Real" array="False" size=""/>
+            <declare name="nextYearTarget" type="Real" array="False" size=""/>
+            <declare name="results" type="Real" array="True" size="2"/>
+            <output expression="&quot;Enter salesperson last name:&quot;" newline="True"/>
+            <input variable="lastName"/>
+            <output expression="&quot;Enter sales amount:&quot;" newline="True"/>
+            <input variable="sales"/>
+            <call expression="computeSalesReport(sales, results)"/>
+            <assign variable="commission" expression="results[0]"/>
+            <assign variable="nextYearTarget" expression="results[1]"/>
+            <output expression="&quot;Salesperson Last Name: &quot; &amp; lastName" newline="True"/>
+            <output expression="&quot;Commission: $&quot; &amp; ToFixed(commission, 2)" newline="True"/>
+            <output expression="&quot;Next Year's Target: $&quot; &amp; ToFixed(nextYearTarget, 2)" newline="True"/>
+        </body>
+    </function>
+    <function name="computeSalesReport" type="None" variable="">
+        <parameters>
+            <parameter name="salesAmount" type="Real" array="False"/>
+            <parameter name="returnValues" type="Real" array="True"/>
+        </parameters>
+        <body>
+            <if expression="salesAmount &gt; 100000">
+                <then>
+                    <assign variable="returnValues[0]" expression="salesAmount * 0.10"/>
+                </then>
+                <else>
+                    <assign variable="returnValues[0]" expression="salesAmount * 0.05"/>
+                </else>
+            </if>
+            <assign variable="returnValues[1]" expression="salesAmount * 0.05"/>
+        </body>
+    </function>
+</flowgorithm>

@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Student Exam Scores"/>
+        <attribute name="authors" value="Student"/>
+        <attribute name="about" value="Computes total points and average exam score using a function."/>
+        <attribute name="saved" value="2026-11-18 09:12:34 PM"/>
+        <attribute name="created" value="c2hhbWE7REVTS1RPUC1HSFRTUVVGOzIwMjYtMTEtMTg7MDk6MTE6MzcgUE07MjkzNw=="/>
+        <attribute name="edited" value="c2hhbWE7REVTS1RPUC1HSFRTUVVGOzIwMjYtMTEtMTg7MDk6MTI6MzQgUE07MTszMDQz"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="lastName" type="String" array="False" size=""/>
+            <declare name="score1" type="Real" array="False" size=""/>
+            <declare name="score2" type="Real" array="False" size=""/>
+            <declare name="score3" type="Real" array="False" size=""/>
+            <declare name="totalPoints" type="Real" array="False" size=""/>
+            <declare name="averageScore" type="Real" array="False" size=""/>
+            <declare name="results" type="Real" array="True" size="2"/>
+            <output expression="&quot;Enter the student's last name:&quot;" newline="True"/>
+            <input variable="lastName"/>
+            <output expression="&quot;Enter exam score 1:&quot;" newline="True"/>
+            <input variable="score1"/>
+            <output expression="&quot;Enter exam score 2:&quot;" newline="True"/>
+            <input variable="score2"/>
+            <output expression="&quot;Enter exam score 3:&quot;" newline="True"/>
+            <input variable="score3"/>
+            <call expression="computeScores(score1, score2, score3, results)"/>
+            <assign variable="totalPoints" expression="results[0]"/>
+            <assign variable="averageScore" expression="results[1]"/>
+            <output expression="&quot;Student Last Name: &quot; &amp; lastName" newline="True"/>
+            <output expression="&quot;Total Points: &quot; &amp; ToFixed(totalPoints, 2)" newline="True"/>
+            <output expression="&quot;Average Exam Score: &quot; &amp; ToFixed(averageScore, 2)" newline="True"/>
+        </body>
+    </function>
+    <function name="computeScores" type="None" variable="">
+        <parameters>
+            <parameter name="s1" type="Real" array="False"/>
+            <parameter name="s2" type="Real" array="False"/>
+            <parameter name="s3" type="Real" array="False"/>
+            <parameter name="returnValues" type="Real" array="True"/>
+        </parameters>
+        <body>
+            <assign variable="returnValues[0]" expression="s1 + s2 + s3"/>
+            <assign variable="returnValues[1]" expression="returnValues[0] / 3"/>
+        </body>
+    </function>
+</flowgorithm>
